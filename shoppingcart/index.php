@@ -1,10 +1,6 @@
 <?php
     session_start();
-    
-    if(isset($_POST["reset"])){
-      session_destroy();
-    }
-
+     
     if(isset($_POST["btnOK"])){
       $current="id".$_POST["gid"];
       if(!is_numeric($_POST["amount"])){
@@ -14,14 +10,7 @@
       }else{
         $_SESSION[$current]+=$_POST["amount"];}
     }      
-
-    if(isset($_POST["ec"])){
-      foreach($_SESSION as $key=>$value){
-        echo $key."**".$value."*<br>";
-      }
-    }
-    
-
+ 
 ?>
 
 <?php
@@ -113,8 +102,5 @@
         <?php if($_SESSION["power"]>0){?>
           <div id="cart"><a href="cart.php"><img src="image/cart.png" width="50px" height="50px"></a></div>
         <?php }?>
-        <form method="post">
-        <input type="submit" name="reset" value="reset session">
-        <input type="submit" name="ec" value="echo session"></form>
 </body>
 </html>

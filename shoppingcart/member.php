@@ -30,6 +30,13 @@
         $result=mysqli_query($link,$sql);
 
     }
+    if(isset($_POST["deleteB"])){
+      $bid=$_POST["bid"];
+      $sql=<<<sql
+        delete from book where bid=$bid;
+        sql;
+      mysqli_query($link,$sql);
+    }
 
 
 ?>
@@ -124,8 +131,14 @@
                         <td><?= $roll["amount"]?></td>  
                         <td><?= $roll["total"]?></td>
                     </tr>
-                <?php }?>
-        <?php } ?>
+                <?php }
+                  if(isset($_POST["ongoing"])){
+                ?>                
+                <form method="post">
+                <tr><td><td><td><td><input type="submit" name="deleteB" class="btn-danger" value="取消訂單<?=$bid?>"></td></tr>
+                  <input type="hidden" name="bid" value="<?=$bid?>">
+                </form>
+        <?php }} ?>
     </tbody>
     <?php } ?>
   </table>
