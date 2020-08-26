@@ -2,6 +2,10 @@
     session_start();
      
     if(isset($_POST["btnOK"])){
+      if(!isset($_SESSION["userName"])){
+        header("location:login.php");
+        exit();
+      }
       $current="id".$_POST["gid"];
       if(!is_numeric($_POST["amount"])){
         echo "輸入的值並非數字";
