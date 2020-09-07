@@ -18,7 +18,7 @@
 ?>
 
 <?php
-  $link=mysqli_connect("localhost","root","root","shoppingMall");
+  $link=mysqli_connect("localhost","sam","55688","shoppingMall");
   mysqli_query($link,"set names utf-8");
   $sql=<<<sql
       select * from goods;
